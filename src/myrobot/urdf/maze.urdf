@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot name="final_maze">
+
+  <link name="maze_root">
+    <inertial><mass value="0.01"/><inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/></inertial>
+  </link>
+
+  <link name="floor">
+    <visual>
+      <origin xyz="0.9 0.9 -0.005" rpy="0 0 0"/>
+      <geometry><box size="1.8 1.8 0.01"/></geometry>
+      <material name="blue"><color rgba="0.1 0.1 0.5 1.0"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.9 0.9 -0.005" rpy="0 0 0"/>
+      <geometry><box size="1.8 1.8 0.01"/></geometry>
+    </collision>
+  </link>
+  <joint name="j_floor" type="fixed"><parent link="maze_root"/><child link="floor"/></joint>
+
+  <link name="end_zone">
+    <visual>
+      <geometry><box size="0.2 0.2 0.01"/></geometry>
+      <origin xyz="0.9 1.6 0.005"/> 
+      <material name="green"><color rgba="0 1 0 0.5"/></material>
+    </visual>
+  </link>
+  <joint name="j_end" type="fixed"><parent link="maze_root"/><child link="end_zone"/></joint>
+
+  <link name="wall_AB"><visual><geometry><box size="1.8 0.04 0.3"/></geometry><origin xyz="0.9 0 0.15"/></visual><collision><geometry><box size="1.8 0.04 0.3"/></geometry><origin xyz="0.9 0 0.15"/></collision></link>
+  <joint name="j_AB" type="fixed"><parent link="maze_root"/><child link="wall_AB"/></joint>
+  
+  <link name="wall_CD"><visual><geometry><box size="1.8 0.04 0.3"/></geometry><origin xyz="0.9 1.8 0.15"/></visual><collision><geometry><box size="1.8 0.04 0.3"/></geometry><origin xyz="0.9 1.8 0.15"/></collision></link>
+  <joint name="j_CD" type="fixed"><parent link="maze_root"/><child link="wall_CD"/></joint>
+  
+  <link name="wall_AC"><visual><geometry><box size="0.04 1.8 0.3"/></geometry><origin xyz="0 0.9 0.15"/></visual><collision><geometry><box size="0.04 1.8 0.3"/></geometry><origin xyz="0 0.9 0.15"/></collision></link>
+  <joint name="j_AC" type="fixed"><parent link="maze_root"/><child link="wall_AC"/></joint>
+  
+  <link name="wall_BD"><visual><geometry><box size="0.04 1.8 0.3"/></geometry><origin xyz="1.8 0.9 0.15"/></visual><collision><geometry><box size="0.04 1.8 0.3"/></geometry><origin xyz="1.8 0.9 0.15"/></collision></link>
+  <joint name="j_BD" type="fixed"><parent link="maze_root"/><child link="wall_BD"/></joint>
+  
+  <link name="wall_GF"><visual><geometry><box size="0.04 0.45 0.02"/></geometry><origin xyz="0.45 0.225 0.01"/></visual><collision><geometry><box size="0.04 0.45 0.02"/></geometry><origin xyz="0.45 0.225 0.01"/></collision></link>
+  <joint name="j_GF" type="fixed"><parent link="maze_root"/><child link="wall_GF"/></joint>
+  
+  <link name="wall_M1F"><visual><geometry><box size="0.04 0.3 0.02"/></geometry><origin xyz="0.45 0.6 0.01"/></visual><collision><geometry><box size="0.04 0.3 0.02"/></geometry><origin xyz="0.45 0.6 0.01"/></collision></link>
+  <joint name="j_M1F" type="fixed"><parent link="maze_root"/><child link="wall_M1F"/></joint>
+  
+  <link name="wall_FE"><visual><geometry><box size="0.45 0.04 0.02"/></geometry><origin xyz="0.225 0.45 0.01"/></visual><collision><geometry><box size="0.45 0.04 0.02"/></geometry><origin xyz="0.225 0.45 0.01"/></collision></link>
+  <joint name="j_FE" type="fixed"><parent link="maze_root"/><child link="wall_FE"/></joint>
+  
+  <link name="wall_LM"><visual><geometry><box size="1.0 0.03 0.02"/></geometry><origin xyz="1.3 0.3 0.01"/></visual><collision><geometry><box size="1.0 0.03 0.02"/></geometry><origin xyz="1.3 0.3 0.01"/></collision></link>
+  <joint name="j_LM" type="fixed"><parent link="maze_root"/><child link="wall_LM"/></joint>
+  
+  <link name="wall_L1M1"><visual><geometry><box size="1.0 0.03 0.02"/></geometry><origin xyz="0.95 0.75 0.01"/></visual><collision><geometry><box size="1.0 0.03 0.02"/></geometry><origin xyz="0.95 0.75 0.01"/></collision></link>
+  <joint name="j_L1M1" type="fixed"><parent link="maze_root"/><child link="wall_L1M1"/></joint>
+  
+  <link name="wall_KN"><visual><geometry><box size="0.6 0.03 0.02"/></geometry><origin xyz="0.3 1.05 0.01"/></visual><collision><geometry><box size="0.6 0.03 0.02"/></geometry><origin xyz="0.3 1.05 0.01"/></collision></link>
+  <joint name="j_KN" type="fixed"><parent link="maze_root"/><child link="wall_KN"/></joint>
+  
+  <link name="wall_N1K1"><visual><geometry><box size="0.6 0.03 0.02"/></geometry><origin xyz="1.5 1.15 0.01"/></visual><collision><geometry><box size="0.6 0.03 0.02"/></geometry><origin xyz="1.5 1.15 0.01"/></collision></link>
+  <joint name="j_N1K1" type="fixed"><parent link="maze_root"/><child link="wall_N1K1"/></joint>
+  
+  <link name="wall_IH"><visual><geometry><box size="0.9 0.03 0.02"/></geometry><origin xyz="1.05 1.4 0.01"/></visual><collision><geometry><box size="0.9 0.03 0.02"/></geometry><origin xyz="1.05 1.4 0.01"/></collision></link>
+  <joint name="j_IH" type="fixed"><parent link="maze_root"/><child link="wall_IH"/></joint>
+  
+  <link name="wall_ST"><visual><geometry><box size="0.03 0.45 0.02"/></geometry><origin xyz="0.1 1.475 0.01"/></visual><collision><geometry><box size="0.03 0.45 0.02"/></geometry><origin xyz="0.1 1.475 0.01"/></collision></link>
+  <joint name="j_ST" type="fixed"><parent link="maze_root"/><child link="wall_ST"/></joint>
+  
+  <link name="wall_RS"><visual><geometry><box size="0.45 0.03 0.02"/></geometry><origin xyz="0.325 1.7 0.01"/></visual><collision><geometry><box size="0.45 0.03 0.02"/></geometry><origin xyz="0.325 1.7 0.01"/></collision></link>
+  <joint name="j_RS" type="fixed"><parent link="maze_root"/><child link="wall_RS"/></joint>
+
+  <gazebo><static>true</static></gazebo>
+  <gazebo reference="floor"><material>Gazebo/SkyBlue</material></gazebo>
+  <gazebo reference="end_zone"><material>Gazebo/Green</material></gazebo>
+  
+  <gazebo reference="wall_AB"><material>Gazebo/White</material></gazebo>
+  <gazebo reference="wall_CD"><material>Gazebo/White</material></gazebo>
+  <gazebo reference="wall_AC"><material>Gazebo/White</material></gazebo>
+  <gazebo reference="wall_BD"><material>Gazebo/White</material></gazebo>
+  
+  <gazebo reference="wall_GF"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_FE"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_M1F"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_LM"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_L1M1"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_KN"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_N1K1"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_IH"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_ST"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="wall_RS"><material>Gazebo/Black</material></gazebo>
+</robot>

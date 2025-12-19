@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<robot name="maze_outer">
+
+  <!-- ===== Root Link (must have inertial) ===== -->
+  <link name="maze_root">
+    <inertial>
+      <mass value="0.0001"/>
+      <origin xyz="0 0 0"/>
+      <inertia
+        ixx="1e-6" ixy="0" ixz="0"
+        iyy="1e-6" iyz="0"
+        izz="1e-6"/>
+    </inertial>
+  </link>
+
+  <!-- ===== Bottom Wall ===== -->
+  <link name="bottom_wall">
+    <visual>
+      <geometry>
+        <box size="2.0 0.05 0.3"/>
+      </geometry>
+      <origin xyz="0 -1.0 0.15"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="2.0 0.05 0.3"/>
+      </geometry>
+      <origin xyz="0 -1.0 0.15"/>
+    </collision>
+  </link>
+
+  <joint name="bottom_wall_joint" type="fixed">
+    <parent link="maze_root"/>
+    <child link="bottom_wall"/>
+  </joint>
+
+  <!-- ===== Top Wall ===== -->
+  <link name="top_wall">
+    <visual>
+      <geometry>
+        <box size="2.0 0.05 0.3"/>
+      </geometry>
+      <origin xyz="0 1.0 0.15"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="2.0 0.05 0.3"/>
+      </geometry>
+      <origin xyz="0 1.0 0.15"/>
+    </collision>
+  </link>
+
+  <joint name="top_wall_joint" type="fixed">
+    <parent link="maze_root"/>
+    <child link="top_wall"/>
+  </joint>
+
+  <!-- ===== Left Wall ===== -->
+  <link name="left_wall">
+    <visual>
+      <geometry>
+        <box size="0.05 2.0 0.3"/>
+      </geometry>
+      <origin xyz="-1.0 0 0.15"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.05 2.0 0.3"/>
+      </geometry>
+      <origin xyz="-1.0 0 0.15"/>
+    </collision>
+  </link>
+
+  <joint name="left_wall_joint" type="fixed">
+    <parent link="maze_root"/>
+    <child link="left_wall"/>
+  </joint>
+
+  <!-- ===== Right Wall ===== -->
+  <link name="right_wall">
+    <visual>
+      <geometry>
+        <box size="0.05 2.0 0.3"/>
+      </geometry>
+      <origin xyz="1.0 0 0.15"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.05 2.0 0.3"/>
+      </geometry>
+      <origin xyz="1.0 0 0.15"/>
+    </collision>
+  </link>
+
+  <joint name="right_wall_joint" type="fixed">
+    <parent link="maze_root"/>
+    <child link="right_wall"/>
+  </joint>
+
+  <!-- ===== Gazebo settings ===== -->
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+
+</robot>
+

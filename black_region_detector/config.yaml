@@ -1,0 +1,43 @@
+# 机器人导航系统配置文件
+
+# 摄像头配置
+camera:
+  index: 0  # 摄像头索引，0为默认摄像头
+  width: 640
+  height: 480
+  fps: 30
+
+# 视觉检测配置
+detection:
+  threshold: 48  # 黑色检测阈值 (0-255)
+  min_area: 100  # 最小区域面积（像素）
+  max_line_offset: 150  # 最大线条偏移量（像素）
+
+# 机器人连接配置
+robot:
+  connection_type: "serial"  # "serial" 或 "ros"
+  port: "COM3"  # Windows: COM3, Linux: /dev/ttyUSB0
+  baudrate: 115200
+  
+  # ROS配置（如果使用ROS）
+  ros:
+    cmd_vel_topic: "/cmd_vel"
+    node_name: "robot_controller"
+
+# 运动控制参数
+motion:
+  max_speed: 100  # 最大速度 (0-100)
+  base_speed: 50  # 基础速度 (0-100)
+  turn_speed: 30  # 转弯速度 (0-100)
+  
+# 导航参数
+navigation:
+  update_rate: 30  # 控制更新频率（Hz）
+  frame_skip: 1  # 跳帧数（用于降低计算负载）
+  
+# 显示配置
+display:
+  show_window: true  # 是否显示图像窗口
+  show_mask: true  # 是否显示掩码图像
+
+
